@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+</head>
+<body>
+    <h1>멀티 파일 업로드 테스트</h1>
+    <form method="post" enctype="multipart/form-data" action="/file/upload">
+        <table>
+            <!-- <tr>
+                <td>업로드 경로</td>
+                <td>
+                    <section>
+                        
+                    </section>
+                </td>
+            </tr> -->
+            <tr>
+                <td>Files :</td>
+                <td><input type="file" name="files" multiple></td>
+            </tr>
+        </table>
+        <input type="submit" value="업로드">
+    </form>
+</body>
+</html>

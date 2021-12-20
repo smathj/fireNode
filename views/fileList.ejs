@@ -1,0 +1,25 @@
+<style>
+    img {
+        width : 300px;
+        height: 200px;
+    }
+</style>
+<table border="1">
+<%for(let i=0; i<fileList.length; i++) { %>
+    <tr>
+        <td><%= fileList[i] %></td>
+        <% if(fileList[i].substring(fileList[i].lastIndexOf('.')+1) == 'mp4')  { %>
+            <td><embed src="/upload/<%= fileList[i] %>" autoplay="false"></td>    
+        <% } else { %>
+        <td><img src="/upload/<%= fileList[i] %>" alt="이미지, 동영상 파일이 아닙니다."></td>
+        <% } %>
+        <td><a href="/file/download/<%= fileList[i] %>">다운로드</a></td>
+    </tr>
+<% } %>
+    <tr>
+        <td>아이유 ^_^</td>
+        <td><iframe width="300" height="200" src="https://www.youtube.com/embed/JpTqSzm4JOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+        <td><a href="https://www.youtube.com/watch?v=JpTqSzm4JOk&list=RDJpTqSzm4JOk&start_radio=1">원본 보러가기</a></td>
+    </tr>
+</table>
+

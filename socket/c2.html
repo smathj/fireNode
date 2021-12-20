@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>소켓</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = function() {
+            var socket = io.connect();
+
+            // 클라이언트인 html은 B
+            socket.on('B', (data) => {
+                alert(data);
+            })
+
+            document.getElementById('button').onclick = function() {
+                var text = document.getElementById('text').value;
+                console.log(text);
+                socket.emit('A', text);
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <h1>HTMLPage.html</h1>
+    <input type="text" id="text">
+    <input type="button" id="button" value="echo" >
+</body>
+</html>

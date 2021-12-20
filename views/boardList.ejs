@@ -1,0 +1,93 @@
+<style>
+    th {
+        background-color: dodgerblue;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+        /* border : 1px solid black;
+        border-radius: 3px; */
+    }
+
+    .page {
+        border : 1px solid black;
+        display: inline-block;
+        width : 15px;
+        text-align : center;
+        background-color: #eaf4f6;
+    }
+
+    td {
+        height: 25px;
+    }
+
+    span {
+        border : 1px solid black;
+        border-radius: 3px;
+        background-color: #f1c677;
+    }
+
+    table {
+        width: 500px;
+    }
+</style>
+<h2>
+    안녕하세요 <%= user %> 님, 여기는 전체 게시글입니다. <a href="/logout" style="color: red;">로그아웃</a>
+</h2>
+<span><a href="/board/create">글쓰기</a></span> <span><a href="/users">유저 리스트</a></span>
+<hr>
+<div>
+    <table border="1">
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+<% for(let i=0; i<boardList.length; i++) { %>
+    
+        <tr id='trNum_<%= (i+1) %>' onclick="test('trNum_<%= (i+1) %>');">
+            <td style="overflow-x: hidden;overflow-y: hidden;"><%= boardList[i].title %></td>
+            <td style="overflow-x: hidden;overflow-y: hidden;"><%= boardList[i].contents %></td>
+            <td style="overflow-x: hidden;overflow-y: hidden;"><%= boardList[i].id %></td>
+            <td style="overflow-x: hidden;overflow-y: hidden;"><%= boardList[i].createdAt %></td>
+        </tr>
+<% } %>
+    </table>
+    <br>
+
+<% for(let i=0; i<pageMaxPage; i++) { %>
+    <!-- <span style=""><a href="#"><%= i+1 %></a></span> -->
+    <div class="page"><a href="/board/<%= i+1 %>"><%= i+1 %></a></div>
+<% } %>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    function test(id) {
+        // console.log(id);
+        // console.log(document.getElementById(id).children[0].textContent);
+        // console.log(document.getElementById(id).children[0].nodeValue);
+
+        let title       = document.getElementById(id).children[0].textContent;
+        let contents    = document.getElementById(id).children[1].textContent;
+        let writter     = document.getElementById(id).children[2].textContent;
+        let createdAt   = document.getElementById(id).children[3].textContent;
+        console.log(title,contents,writter,createdAt);
+        // axios.get(`/board/${pageNum.length}`)
+        // .then((result) => {
+        //         // console.log(result.data);
+        //         // console.log('삭제시작');
+        //         // console.log('추가시작');
+        //         // console.log(typeof result);
+                
+        //         // document.querySelector('style').remove();
+        //         // document.querySelector('body').remove();
+        //         document.querySelector('html').remove();
+        //         document.write(result.data);
+        //     }
+        // );
+    }
+
+
+</script>
